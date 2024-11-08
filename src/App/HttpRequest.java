@@ -6,6 +6,8 @@ public class HttpRequest {
     private String contentType;
     private String body;
 
+    private String headers;
+
     public HttpRequest(String method, String resourceUrl, String contentType, String body) {
         this.method = method;
         this.resourceUrl = resourceUrl;
@@ -37,7 +39,22 @@ public class HttpRequest {
         this.body = body;
     }
 
+    public String getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(String headers) {
+        this.headers = headers;
+    }
+
+    @Override
     public String toString() {
-        return "Method: " + method + "\nResource URL: " + resourceUrl + "\nContent Type: " + contentType + "\nBody: " + body;
+        return "HttpRequest{" +
+                "method='" + method + '\'' +
+                ", resourceUrl='" + resourceUrl + '\'' +
+                ", contentType='" + contentType + '\'' +
+                ", body='" + body + '\'' +
+                ", headers='" + headers + '\'' +
+                '}';
     }
 }

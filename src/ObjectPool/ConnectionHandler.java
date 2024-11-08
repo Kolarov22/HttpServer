@@ -52,6 +52,8 @@ public class ConnectionHandler implements Runnable {
                 }
             }
 
+
+
             String contentType = headers.getOrDefault("Content-Type", "text/plain");
             RequestContext requestContext = new RequestContext();
             if (contentType.equals("application/json")) {
@@ -69,15 +71,16 @@ public class ConnectionHandler implements Runnable {
             }
 
             HttpRequest request = new HttpRequest(method, resourceUrl, contentType, body.toString());
+            request.setHeaders(headers.toString());
             requestContext.executeStrategy(request);
 
-            System.out.println(request);
             System.out.println("Sending request to the server...");
 
             String response = requestHandler.handle(request);
 
             out.print(response);
             out.flush();
+            System.out.println(response);
             System.out.println("Response sent\n");
 
 
